@@ -16,8 +16,8 @@ namespace Capstone.Classes
 		}
 
 		// PROPERTIES
-		decimal Balance { get; set; }
-		decimal AmountToDeposit { get; set; }
+		public decimal Balance { get; set; }
+		public decimal AmountToDeposit { get; set; }
 
 
 		// METHODS
@@ -33,8 +33,8 @@ namespace Capstone.Classes
 			return updatedBalance;
 		}
 
-		public decimal Purchase(string slot)
-		{
+		//public decimal Purchase(string slot)
+		//{
 			// Need updated balance
 			// Need price for slot entered
 			
@@ -42,7 +42,7 @@ namespace Capstone.Classes
 			// Check that enough money was entered
 				// If yes for both, update the balance. Report that vend was successful and the new balance
 				// If no, do not update balance. Report that vent was unsuccessful and the new (same) balance
-		}
+		//}
 
 
 	}

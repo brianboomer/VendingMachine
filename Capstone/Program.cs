@@ -12,6 +12,7 @@ namespace Capstone
     {
         public static void Main(string[] args)
         {
+			
 			// Read in the text file that contains the information about the inventory
 			string path = Path.Combine(Environment.CurrentDirectory, "Inventory.txt");
 
@@ -43,6 +44,15 @@ namespace Capstone
 			{
 				Console.WriteLine(ex.Message);
 			}
+
+		 
 		}
+
+
+
+
+
+
+		
 	}
 }
