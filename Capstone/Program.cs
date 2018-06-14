@@ -73,7 +73,7 @@ namespace Capstone
 							DisplayPurchaseMenu();
 							break;
 
-						case 3:
+						case 3: //figure out why it keeps jumping to the last called menu
 							mainMenuBool = false;
 							break;
 
@@ -105,6 +105,7 @@ namespace Capstone
 
 			void DisplayPurchaseMenu()
 			{
+				var test = new VendingMachine();
 				while (true)
 				{
 					Console.Clear();
@@ -113,15 +114,46 @@ namespace Capstone
 					Console.WriteLine(" 3. Finish Transaction");
 					Console.WriteLine(" 4. return to main menu");
 					Console.WriteLine();
-					Console.WriteLine($"Current balance: TODO Balance");
-					Console.ReadKey();
+					Console.WriteLine($"Current balance: {test.Balance.ToString("C2")}");
+
+					int menuChoice = int.Parse(Console.ReadLine());
+
+					//switch method for the purchese menu
+
+					switch (menuChoice)
+					{
+						case 1: //feed money
+							Console.Clear();
+							Console.WriteLine("How much would you like to insert?");
+							int money = int.Parse(Console.ReadLine());
+							test.Balance = test.Deposit(money, 0);
+							break;
+
+						case 2: //select an Item
+							
+							break;
+
+						case 3: //finish transaction
+							break;
+
+						case 4: //return to menu 
+							break;
+
+
+
+
+
+					}
+				
+
+
+
 				}
 
 			}
 
 
 		}
-
-		
+	
 	}
 }

@@ -9,10 +9,10 @@ namespace Capstone.Classes
 	public class VendingMachine
 	{
 		// CONSTRUCTOR
-		public VendingMachine (decimal balance, decimal amountToDeposit)
+		public VendingMachine() //(decimal balance, decimal amountToDeposit)
 		{
-			this.Balance = balance;
-			this.AmountToDeposit = amountToDeposit;
+			//this.Balance = balance;
+			//this.AmountToDeposit = amountToDeposit;
 		}
 
 		// PROPERTIES
@@ -28,14 +28,16 @@ namespace Capstone.Classes
 
 			// Add the amount to deposit into the current balance
 			updatedBalance = amountToDeposit + startingBalance;
-
+			
 			// Return the output variable
 			return updatedBalance;
 		}
 
-		//public decimal Purchase(string slot)
+		//public decimal Purchase(string slot, decimal staringBalance)
 		//{
 			// Need updated balance
+				//call in balance property
+			
 			// Need price for slot entered
 			
 			// Call list to see if there is inventory on slot
