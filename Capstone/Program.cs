@@ -12,13 +12,14 @@ namespace Capstone
     {
         public static void Main(string[] args)
         {
-			
+		
 			MainMenu();
 
 			void MainMenu()
 			{
 				Console.Clear();
 				Console.WriteLine("VendoMatic 5000");
+					
 				Console.WriteLine();
 
 				bool mainMenuBool = true;
@@ -34,7 +35,10 @@ namespace Capstone
 					switch (menuChoice)
 					{
 						case 1: //show whats in the vending machine(METHOD)
-							//DisplayInventory(itemsInventory);
+							Dictionary<string, List<Item>> vendingInventory = Inventory.InitalizeInventory();
+
+							DisplayInventory(vendingInventory);
+							
 							break;
 
 						case 2: // bring up a new menu with (feed money, select product, finish trans)(METHOD)
@@ -48,9 +52,9 @@ namespace Capstone
 					}
 				}
 			}
-			
 
-			void DisplayInventory(Dictionary<string,List<Item>> itemsToDisplay)
+
+			void DisplayInventory(Dictionary<string, List<Item>> itemsToDisplay)
 			{
 				bool displayInventoryBool = true;
 				while (displayInventoryBool)
@@ -91,17 +95,37 @@ namespace Capstone
 					switch (menuChoice)
 					{
 						case 1: //feed money
+							//balance keeps getting reset the when nw money is added (fixed) 
 							Console.Clear();
 							Console.WriteLine("How much would you like to insert?");
 							int money = int.Parse(Console.ReadLine());
-							test.Balance = test.Deposit(money, 0);
+							test.Balance += test.Deposit(money, 0);
 							break;
 
 						case 2: //select an Item
-							
+							Console.Clear();
+
+							//display the list of items....just wanted to use the dispay inventory method again but it has teh console.readkey and isnt working properly
+							Dictionary<string, List<Item>> vendingInventory = Inventory.InitalizeInventory();
+							DisplayInventory(vendingInventory);
+
+							Console.WriteLine("Select your goodie");
+							string selectedSlot = Console.ReadLine().ToUpper();
 							break;
 
 						case 3: //finish transaction
+							//not showing the amount of money total returned (fixed)
+							//display total change that is returned
+							Change chingChing = test.ReturnChange();
+							Console.WriteLine($"Your change is {chingChing.TotalChange.ToString("C2")}");
+							//quarters returned
+							Console.WriteLine($"Total Quarters given: {chingChing.Quarters}");
+							//dimes returned
+							Console.WriteLine($"Total Dimes given: {chingChing.Dimes}");
+							//nickels returned
+							Console.WriteLine($"Total Nickles given: {chingChing.Nickels}");
+							Console.ReadKey();
+
 							break;
 
 						case 4: //return to menu 

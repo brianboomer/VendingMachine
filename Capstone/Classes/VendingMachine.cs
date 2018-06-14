@@ -8,6 +8,8 @@ namespace Capstone.Classes
 {
 	public class VendingMachine
 	{
+		
+
 		// CONSTRUCTOR
 		public VendingMachine() //(decimal balance, decimal amountToDeposit)
 		{
@@ -33,18 +35,40 @@ namespace Capstone.Classes
 			return updatedBalance;
 		}
 
-		//public decimal Purchase(string slot, decimal staringBalance)
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="slot"></param>
+		/// <returns></returns>
+		//public Inventory Purchase(string slot)
 		//{
+			//Dictionary<string, Inventory> vendingInventory = new Dictionary<string, Inventory>();
+
+			//if(vendingInventory.ContainsKey())
+
 			// Need updated balance
-				//call in balance property
-			
+			//call in balance property
+
+
 			// Need price for slot entered
-			
+
 			// Call list to see if there is inventory on slot
 			// Check that enough money was entered
-				// If yes for both, update the balance. Report that vend was successful and the new balance
-				// If no, do not update balance. Report that vent was unsuccessful and the new (same) balance
+			// If yes for both, update the balance. Report that vend was successful and the new balance
+			// If no, do not update balance. Report that vent was unsuccessful and the new (same) balance
 		//}
+
+		/// <summary>
+		/// returns change
+		/// </summary>
+		/// <returns></returns>
+		public Change ReturnChange()
+		{
+			
+			Change change = new Change(Balance);
+			return change;
+		}
+		
 
 
 	}

@@ -9,7 +9,7 @@ namespace Capstone.Classes
 	public class Item
 	{
 		// Properties of an item
-		public string Slot { get; }
+		public string Slot { get; set; }
 		public string Name { get; }
 		public decimal Price { get; }
 		public string Type { get; }
