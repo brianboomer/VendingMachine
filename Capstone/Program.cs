@@ -13,38 +13,6 @@ namespace Capstone
         public static void Main(string[] args)
         {
 			
-			// Read in the text file that contains the information about the inventory
-			string path = Path.Combine(Environment.CurrentDirectory, "Inventory.txt");
-
-			// Create a dictionary of items
-			Dictionary<string, List<Item>> itemsInventory = new Dictionary<string, List<Item>>();
-
-			try
-			{
-				using (StreamReader sr = new StreamReader(path))
-				while (!sr.EndOfStream)
-					{
-						string currentLine = sr.ReadLine();
-						string[] currentItemArray = currentLine.Split('|');
-
-						Item currentItem = new Item(currentItemArray);
-
-						List<Item> stockOfCurrentItem = new List<Item>();
-
-						// There are 5 of each item, by default
-						for (int i = 0; i < 5; i++)
-						{
-							stockOfCurrentItem.Add(currentItem);
-						}
-
-						itemsInventory.Add(currentItemArray[0], stockOfCurrentItem);
-					}
-			}
-			catch (IOException ex)
-			{
-				Console.WriteLine(ex.Message);
-			}
-
 			MainMenu();
 
 			void MainMenu()
@@ -66,7 +34,7 @@ namespace Capstone
 					switch (menuChoice)
 					{
 						case 1: //show whats in the vending machine(METHOD)
-							DisplayInventory(itemsInventory);
+							//DisplayInventory(itemsInventory);
 							break;
 
 						case 2: // bring up a new menu with (feed money, select product, finish trans)(METHOD)
