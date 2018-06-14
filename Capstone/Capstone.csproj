@@ -46,7 +46,6 @@
     <Compile Include="Classes\AuditLog.cs" />
     <Compile Include="Classes\Item.cs" />
     <Compile Include="Classes\VendingMachine.cs" />
-    <Compile Include="Classes\VendingMenus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

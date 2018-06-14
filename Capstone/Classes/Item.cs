@@ -9,10 +9,10 @@ namespace Capstone.Classes
 	public class Item
 	{
 		// Properties of an item
-		string Slot { get; }
-		string Name { get; }
-		decimal Price { get; }
-		string Type { get; }
+		public string Slot { get; }
+		public string Name { get; }
+		public decimal Price { get; }
+		public string Type { get; }
 
 		// Constructor
 		public Item (string[] currentItem)
