@@ -21,6 +21,9 @@ namespace Capstone.Classes
 		// PROPERTIES
 		public decimal Balance { get; set; }
 		public decimal AmountToDeposit { get; set; }
+		public string Action { get; set; }
+		public decimal Before { get; set; }
+		public decimal After { get; set; }
 
 
 		// METHODS
@@ -28,9 +31,18 @@ namespace Capstone.Classes
 		{
 			// Declare the output variable
 			decimal updatedBalance = startingBalance;
+			this.Before = startingBalance;
 
 			// Add the amount to deposit into the current balance
 			updatedBalance = amountToDeposit + startingBalance;
+
+			// Set Audit Log Properties
+			this.Action = "DEPOSIT";
+			this.After = updatedBalance;
+
+			// Run Audit Log
+			AuditLog createNewAuditLine = new AuditLog(Action, Before, After);
+			createNewAuditLine.WriteToLog();
 
 			// Return the output variable
 			return updatedBalance;
@@ -52,7 +64,14 @@ namespace Capstone.Classes
 				if (Inventory.ItemsInventory.ContainsKey(selectedSlot) && Balance >= Inventory.ItemsInventory[selectedSlot][0].Price)
 				{
 					var item = Inventory.ItemsInventory[selectedSlot][0];
+					Before = Balance;
 					Balance -= item.Price;
+					After = Balance;
+					Action = $"{Inventory.ItemsInventory[selectedSlot][0].Name} {Inventory.ItemsInventory[selectedSlot][0].Slot}";
+					// Run Audit Log
+					AuditLog createNewAuditLine = new AuditLog(Action, Before, After);
+					createNewAuditLine.WriteToLog();
+
 					Inventory.ItemsInventory[selectedSlot].RemoveAt(0);
 
 				}
@@ -65,6 +84,8 @@ namespace Capstone.Classes
 			catch (Exception)
 			{
 				Console.WriteLine("This Item Is Sold Out!!");
+				//Item overwriteItem = new Item(  ) { "Sold Out", 0, "Sold Out", "Sold Out" };
+
 				//Inventory.ItemsInventory[selectedSlot][0].Name = "Sold out";
 				//Inventory.ItemsInventory[selectedSlot][0].Price = 0;
 				//Inventory.ItemsInventory[selectedSlot][0].Slot = "Sold out";

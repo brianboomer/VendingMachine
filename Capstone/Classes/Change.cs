@@ -17,6 +17,9 @@ namespace Capstone.Classes
 		private decimal nickels;
 		private decimal pennies;
 		private decimal totalChange;
+		public string Action;
+		public decimal Before;
+		public decimal After;
 
 
 		//properties (derived)
@@ -65,6 +68,13 @@ namespace Capstone.Classes
 		/// <param name="changeInCents"></param>
 		public Change(decimal changeInCents)
 		{
+			this.Before = changeInCents;
+			this.After = 0;
+			this.Action = "GIVE CHANGE";
+
+			AuditLog createNewAuditLine = new AuditLog(Action, Before, After);
+			createNewAuditLine.WriteToLog();
+
 			totalChange = changeInCents;
 
 			decimal changeThatMakesCents = changeInCents;
@@ -94,8 +104,8 @@ namespace Capstone.Classes
 				}
 
 			}
-
 			
+
 
 		}
 	}
