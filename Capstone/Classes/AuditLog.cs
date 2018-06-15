@@ -25,7 +25,7 @@ namespace Capstone.Classes
 		public void WriteToLog()
 		{
 			{
-				string auditLog = Path.Combine(Environment.CurrentDirectory, "AuditLog.txt");
+				string auditLog = Path.Combine(Environment.CurrentDirectory, "Log.txt");
 				try
 				{
 					using (StreamWriter sw = new StreamWriter(auditLog, true))

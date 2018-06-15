@@ -49,7 +49,7 @@ namespace Capstone.Classes
 		}
 
 		/// <summary>
-		/// 
+		/// method for purchasing an item
 		/// </summary>
 		/// <param></param>
 		/// <returns></returns>
@@ -74,22 +74,25 @@ namespace Capstone.Classes
 
 					Inventory.ItemsInventory[selectedSlot].RemoveAt(0);
 
+					Consume sound = new Consume(item.Type);
+					sound.SoundMunch(item.Type);
+					Console.ReadKey();
 				}
-				else
+				else if (Inventory.ItemsInventory.ContainsKey(selectedSlot) && Balance < Inventory.ItemsInventory[selectedSlot][0].Price)
 				{
 					Console.WriteLine("you dont have enough money");
+					Console.ReadKey();
+				}
+				else if (!Inventory.ItemsInventory.ContainsKey(selectedSlot))
+				{
+					Console.WriteLine("Slot does not exist");
 					Console.ReadKey();
 				}
 			}
 			catch (Exception)
 			{
 				Console.WriteLine("This Item Is Sold Out!!");
-				//Item overwriteItem = new Item(  ) { "Sold Out", 0, "Sold Out", "Sold Out" };
 
-				//Inventory.ItemsInventory[selectedSlot][0].Name = "Sold out";
-				//Inventory.ItemsInventory[selectedSlot][0].Price = 0;
-				//Inventory.ItemsInventory[selectedSlot][0].Slot = "Sold out";
-				//Inventory.ItemsInventory[selectedSlot][0].Type = "Sold out";
 				Console.ReadKey();
 			}
 			return Balance;
@@ -121,5 +124,5 @@ namespace Capstone.Classes
 
 	}
 
-	
+
 }
