@@ -15,6 +15,7 @@ namespace Capstone.Classes
 		private decimal quarters;
 		private decimal dimes;
 		private decimal nickels;
+		private decimal pennies;
 		private decimal totalChange;
 
 
@@ -40,6 +41,14 @@ namespace Capstone.Classes
 				return nickels;
 			}
 		}
+		public decimal Pennies
+		{
+			get
+			{
+				return pennies;
+			}
+		}
+
 		
 		public decimal TotalChange
 		{
@@ -78,10 +87,15 @@ namespace Capstone.Classes
 					nickels++;
 					changeThatMakesCents = changeThatMakesCents - .05M;
 				}
-
-
+				else if (changeThatMakesCents >= .01M)
+				{
+					pennies++;
+					changeThatMakesCents = changeThatMakesCents - .01M;
+				}
 
 			}
+
+			
 
 		}
 	}

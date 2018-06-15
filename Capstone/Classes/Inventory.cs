@@ -11,14 +11,15 @@ namespace Capstone
 	public class Inventory
 	{
 		//property
-		public Dictionary<string, List<Item>> ItemsInventory { get; set; }
+		public static Dictionary<string, List<Item>> ItemsInventory { get; set; }
 
 		//constructor
-		public Inventory()
+		public Inventory(Dictionary<string, List<Item>> itemsInventory)
 		{
+			ItemsInventory = itemsInventory;
 		}
 
-		public static Dictionary<string, List<Item>> InitalizeInventory()
+		public static void InitalizeInventory()
 		{// Read in the text file that contains the information about the inventory
 			string path = Path.Combine(Environment.CurrentDirectory, "Inventory.txt");
 
@@ -50,14 +51,8 @@ namespace Capstone
 			{
 				Console.WriteLine(ex.Message);
 			}
-			return itemsInventory;
+
+			ItemsInventory = itemsInventory;
 		}
-
-
-		
-
-
-
-		
 	}
 }
