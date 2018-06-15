@@ -11,11 +11,13 @@ namespace Capstone.Tests
 		public void Change_Test()
 		{
 			//arrange
-			VendingMachine changeTest = new VendingMachine();
+			
 
 			//act
-			changeTest.ReturnChange();
+			 
 			//assert
+
+			
 
 
 
