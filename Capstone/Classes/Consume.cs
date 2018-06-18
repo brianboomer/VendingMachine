@@ -20,7 +20,7 @@ namespace Capstone
 		{
 			this.ItemType = itemType;
 		}
-
+		
 		public void SoundMunch(string itemType)
 		{
 			string soundEffect = "";

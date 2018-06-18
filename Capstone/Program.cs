@@ -12,7 +12,9 @@ namespace Capstone
 	{
 		public static void Main(string[] args)
 		{
+
 			Inventory.InitalizeInventory();
+			var test = new VendingMachine();
 			MainMenu();
 
 			void MainMenu()
@@ -87,7 +89,8 @@ namespace Capstone
 
 			void DisplayPurchaseMenu()
 			{
-				var test = new VendingMachine();
+				//var test = new VendingMachine();
+			
 				while (true)
 				{
 					Console.Clear();
@@ -118,7 +121,7 @@ namespace Capstone
 							DisplayInventory(Inventory.ItemsInventory);
 
 							test.Purchase();
-							//display the list of items....just wanted to use the dispay inventory method again but it has teh console.readkey and isnt working properly
+						
 
 							DisplayPurchaseMenu();
 
@@ -128,7 +131,7 @@ namespace Capstone
 						case 3: //finish transaction
 
 							//display total change that is returned
-
+							
 							Change chingChing = test.ReturnChange();
 							Console.WriteLine($"Your change is {chingChing.TotalChange.ToString("C2")}");
 							//quarters returned

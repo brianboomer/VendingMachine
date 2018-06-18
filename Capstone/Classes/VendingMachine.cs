@@ -58,7 +58,7 @@ namespace Capstone.Classes
 			Console.WriteLine("Select your goodie");
 			string selectedSlot = Console.ReadLine().ToUpper();
 
-			//Dictionary<string, List<Item>> purchaseInventory = Inventory.ItemsInventory;
+			
 			try
 			{
 				if (Inventory.ItemsInventory.ContainsKey(selectedSlot) && Balance >= Inventory.ItemsInventory[selectedSlot][0].Price)
@@ -68,6 +68,7 @@ namespace Capstone.Classes
 					Balance -= item.Price;
 					After = Balance;
 					Action = $"{Inventory.ItemsInventory[selectedSlot][0].Name} {Inventory.ItemsInventory[selectedSlot][0].Slot}";
+
 					// Run Audit Log
 					AuditLog createNewAuditLine = new AuditLog(Action, Before, After);
 					createNewAuditLine.WriteToLog();

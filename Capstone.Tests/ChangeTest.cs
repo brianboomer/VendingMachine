@@ -4,24 +4,33 @@ using Capstone.Classes;
 
 namespace Capstone.Tests
 {
-    [TestClass]
-    public class ChangeTest
-    {
+	[TestClass]
+	public class ChangeTest
+	{
 		[TestMethod]
-		public void Change_Test()
+		public void Change_Test_LessThanDollar()
 		{
-			//arrange
-			
+			Change change = new Change(.90M);
 
-			//act
-			 
-			//assert
-
-			
-
-
-
+			Assert.AreEqual(3, change.Quarters);
+			Assert.AreEqual(1, change.Dimes);
+			Assert.AreEqual(1, change.Nickels);
+			Assert.AreEqual(0, change.Pennies);
 		}
+		[TestMethod]
+		public void Change_Test_MoreThanADollar()
+		{
+
+			Change change = new Change(2.65M);
+
+			Assert.AreEqual(10, change.Quarters);
+			Assert.AreEqual(1, change.Dimes);
+			Assert.AreEqual(1, change.Nickels);
+			Assert.AreEqual(0, change.Pennies);
+
+
+
+		} 
         
     }
 }
